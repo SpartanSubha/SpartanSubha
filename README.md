@@ -16,7 +16,7 @@ From managing ₹1Cr+ portfolios to building dashboards and solving real-world i
 Most people learn analytics through courses.  
 I learned it while handling real business problems.
 
-- Managing **100+ properties & ₹10M+ revenue**
+- Managing **100+ OYO properties & ₹10M+ revenue**
 - Fixing operational inefficiencies using data
 - Improving retention, pricing, and customer experience
 
