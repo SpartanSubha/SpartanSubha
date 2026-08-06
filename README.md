@@ -72,6 +72,8 @@ An end-to-end SQL analytics project on **1,040,201 sales transactions** across *
 | Data Cleaning | Business rule validation | Audit-first: detect → cascade delete → validate |
 | Analysis | 23 SQL queries | Easy / Medium / Advanced tiers |
 
+**ERR Diagram:**
+
 <img width="1116" height="573" alt="ERR Diagram" src="https://github.com/user-attachments/assets/16a8c3cd-2f8b-430b-ac5d-6f800f520710" />
 
 
