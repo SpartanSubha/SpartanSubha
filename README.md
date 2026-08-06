@@ -45,7 +45,48 @@ That's what this profile is about.
 
 ---
 
-### 🏦 1. Aurora Bank — Customer Risk & Spend Intelligence
+### 💻 1. Apple Retail Store — SQL Analysis Project
+
+> **Business Problem:** With 75 global stores and 1M+ transactions, Apple's retail operations generate enormous data — but without proper querying infrastructure, answering even basic business questions takes minutes. The challenge: build a clean, optimized SQL foundation from scratch and extract actionable insights from raw, uncleaned data.
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-View%20Repo-181717?style=flat-square&logo=github)](https://github.com/SpartanSubha/Apple-Retail-Store-SQL-Analysis)
+
+**What I Built:**
+An end-to-end SQL analytics project on **1,040,201 sales transactions** across **75 stores in 20+ countries** — covering database design, bulk data import, index-based performance optimization, business-rule-driven data cleaning, and 23 advanced SQL queries.
+
+**Key Findings:**
+- Identified and removed **493,143 invalid sales records** (sold before product launch) and **2,511 impossible warranty claims** (claimed before purchase) — using cascading deletes to preserve referential integrity
+- Discovered **hidden \r\n characters** in `repair_status` silently corrupting all `GROUP BY` aggregations — fixed with `REPLACE()` before any analysis was run
+- Query performance improved by **34–70%** across all major query patterns using targeted indexes and virtual computed columns — date range queries improved by **95%** over function-based filtering
+- Warranty claim probability varies significantly by country — surfacing geographic risk concentration
+- Products in the **medium price band ($750–$1,500)** generate the highest warranty claim volume — not the most expensive segment
+- Year-over-year growth ratios per store (via `LAG` window function) revealed which locations are scaling vs. plateauing
+
+**Architecture:**
+
+| Layer | Approach | Detail |
+|---|---|---|
+| Database Design | Normalized schema | 5 tables, PKs, FKs, referential integrity enforced |
+| Import | `LOAD DATA LOCAL INFILE` | FK checks disabled during load, re-enabled after |
+| Performance | `EXPLAIN ANALYZE` + Indexes | 5 single-column + 4 composite indexes + virtual columns |
+| Data Cleaning | Business rule validation | Audit-first: detect → cascade delete → validate |
+| Analysis | 23 SQL queries | Easy / Medium / Advanced tiers |
+
+<img width="1116" height="573" alt="ERR Diagram" src="https://github.com/user-attachments/assets/16a8c3cd-2f8b-430b-ac5d-6f800f520710" />
+
+
+**SQL Concepts Used:**
+- Window Functions: `RANK()`, `DENSE_RANK()`, `LAG()`, Running `SUM() OVER()`
+- CTEs (`WITH` clause) for multi-step analytical queries
+- `TIMESTAMPDIFF`, `DATEDIFF`, `DATE_FORMAT` for lifecycle and trend analysis
+- `CASE` logic for price segmentation and conditional aggregation
+- `NOT EXISTS` for anti-join patterns
+
+`MySQL` `CTE` `Window Functions` `Indexing` `EXPLAIN ANALYZE` `Data Cleaning` `Aggregation` `Subqueries`
+
+---
+
+### 🏦 2. Aurora Bank — Customer Risk & Spend Intelligence
 
 > **Business Problem:** Aurora Bank had no systematic way to flag at-risk customers before problems surfaced. Rising personal debt levels were increasing default exposure — but the risk team couldn't see *who* was at risk, *how* they were spending, or *what* the early behavioral signals looked like.
 
@@ -83,7 +124,7 @@ An end-to-end analytics solution across **157,224 transactions and 2,000 custome
 
 ---
 
-### 📊 2. E-Commerce User Journey Funnel & Revenue Leakage Analysis
+### 📊 3. E-Commerce User Journey Funnel & Revenue Leakage Analysis
 
 > **Business Problem:** An e-commerce platform's revenue was underperforming — but no one knew *where* in the funnel customers were dropping off, or *how much* it was costing the business at each stage.
 
@@ -117,7 +158,7 @@ Analyzed **10,000 users** across the full purchase funnel — Browse → Add to 
 
 ---
 
-### 📦 3. Global Freight Cost Intelligence Dashboard
+### 📦 4. Global Freight Cost Intelligence Dashboard
 
 > **Business Problem:** Sea and air freight costs surged 36% post-COVID. Leadership needed to understand whether this was a temporary spike or a structural shift — and what it meant for margins.
 
